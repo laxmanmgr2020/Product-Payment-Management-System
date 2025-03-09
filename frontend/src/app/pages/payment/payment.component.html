@@ -1,0 +1,31 @@
+<h2 class="text-center my-5">Your Payment History</h2>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <table class="table table-bordered table-hover text-center">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">S.N.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Paid Amount</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Ordered Date</th>
+          <th scope="col">Payment Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let payment of payments; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ payment.orders.product.name }}</td>
+          <td>{{ payment.orders.product.description }}</td>
+          <td>{{ payment.amount }}</td>
+          <td>{{ payment.orders.quantity }}</td>
+          <td>{{ payment.orders.orderDate }}</td>
+          <td>{{ payment.paymentDate }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

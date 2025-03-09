@@ -1,0 +1,11 @@
+/* Custom margins */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Optional: Add padding to the table */
+table {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

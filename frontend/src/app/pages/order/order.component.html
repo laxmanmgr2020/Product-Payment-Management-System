@@ -1,0 +1,68 @@
+<h2 class="text-center my-5">Your Order List</h2>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <table class="table table-bordered table-hover text-center">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">S.N.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Ordered Date</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of orders; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ order.product.name }}</td>
+          <td>{{ order.product.description }}</td>
+          <td>{{ order.product.price * order.quantity }}</td>
+          <td>{{ order.quantity }}</td>
+          <td>{{ order.orderDate }}</td>
+          <td>{{ order.orderStatus }}</td>
+          <td>
+            <!--            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#paymentModal" (click)="selectOrder(order)">Make Payment</button>          </td>-->
+            <ng-container *ngIf="order.orderStatus === 'DELIVERED'; else makePaymentButton">
+              <span class="text-success">Paid</span>
+            </ng-container>
+            <ng-template #makePaymentButton>
+              <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#paymentModal"
+                      (click)="selectOrder(order)">
+                Make Payment
+              </button>
+            </ng-template>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="paymentModalLabel">Make Payment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="number" class="form-control" id="amount" [(ngModel)]="paymentAmount" name="amount" required>
+          </div>
+          <p *ngIf="isInvalidAmount" class="text-danger">Amount must be equal to {{ selectedOrderTotal }}.</p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="processPayment()">Proceed</button>
+      </div>
+    </div>
+  </div>
+</div>

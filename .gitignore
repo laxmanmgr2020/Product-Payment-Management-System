@@ -1,0 +1,25 @@
+# Ignore Node.js and Angular files (frontend)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.cache/
+frontend/.vscode/
+frontend/package-lock.json
+frontend/yarn.lock
+
+# Ignore Java and Spring Boot files (backend)
+backend/target/
+backend/.gradle/
+backend/.idea/
+backend/*.iml
+backend/*.log
+backend/.DS_Store
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore system files
+.DS_Store
+Thumbs.db

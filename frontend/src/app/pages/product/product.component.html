@@ -1,0 +1,77 @@
+<h2 class="text-center my-5">Product List</h2>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div *ngFor="let product of products" class="col-md-4 mb-4">
+      <div class="card product-card h-100 shadow-sm">
+        <img class="card-img-top product-image" src="{{product.imagePath}}" [attr.alt]="product.name">
+        <div class="card-body">
+          <h3 class="card-title product-title">{{ product.name }}</h3>
+          <p class="card-text product-price"><strong>$ {{ product.price }}</strong></p>
+          <p class="card-text product-description">{{ product.description }}</p>
+          <p class="card-text product-price">Qty: {{ product.quantity }} /pcs</p>
+<!--          <button-->
+<!--            class="btn btn-primary w-100 mt-3"-->
+<!--            [disabled]="!isLoggedIn"-->
+<!--            (click)="openOrderModal(product)"-->
+<!--          >-->
+<!--            {{ isLoggedIn ? 'Order Now' : 'Please Login to Order' }}-->
+<!--          </button>-->
+
+          <button
+            class="btn btn-primary w-100 mt-3"
+            [disabled]="!isLoggedIn"
+            data-bs-toggle="modal"
+            data-bs-target="#orderModal"
+            (click)="openOrderModal(product)"
+          >
+            {{ isLoggedIn ? 'Order Now' : 'Please Login to Order' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Order Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="orderModalLabel">Order Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="placeOrder()">
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input
+              type="number"
+              class="form-control"
+              id="quantity"
+              [(ngModel)]="orderDetails.quantity"
+              name="quantity"
+              (input)="updateTotalAmount()"
+              required
+            >
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Delivery Location</label>
+            <input
+              type="text"
+              class="form-control"
+              id="location"
+              [(ngModel)]="orderDetails.location"
+              name="location"
+              required
+            >
+          </div>
+          <div class="mb-3">
+            <p><strong>Total Amount: ${{ orderDetails.totalAmount }}</strong></p>
+          </div>
+          <button type="submit" class="btn btn-primary">Proceed to Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

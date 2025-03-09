@@ -1,0 +1,71 @@
+/* Container to add margins on both sides */
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 1200px; /* Adjust the max-width as needed */
+  margin: 0 auto; /* Center the container */
+}
+
+/* Product card styling */
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* Add a slight lift effect on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+/* Product image styling */
+.product-image {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 200px; /* Fixed height for uniformity */
+  object-fit: cover; /* Ensure the image covers the area */
+}
+
+/* Product title styling */
+.product-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Product price styling */
+.product-price {
+  font-size: 1.1rem;
+  color: #28a745; /* Green color for price */
+  margin-bottom: 0.5rem;
+}
+
+/* Product description styling */
+.product-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* Product rating styling */
+.product-rating .badge {
+  font-size: 0.85rem;
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-primary:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
