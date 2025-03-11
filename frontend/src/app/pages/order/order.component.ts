@@ -29,7 +29,7 @@ export class OrderComponent implements OnInit {
       error => {
         console.error('Order fetch failed', error);
         this.axiosService.cleanStorage();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/products']);
       }
     );
 

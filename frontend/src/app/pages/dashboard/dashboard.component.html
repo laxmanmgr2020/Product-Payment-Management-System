@@ -1,8 +1,22 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">Dashboard</h2>
-  <div class="row">
+  <!-- Mostly Ordered Product -->
+  <div class="row reportClass">
+    <div class="col-md-12 mb-12">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header bg-warning text-dark">
+          <h3 class="card-title mb-0">Mostly Ordered Product</h3>
+        </div>
+        <div class="card-body">
+          <app-favourite-report></app-favourite-report>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row reportClass">
     <!-- Order Report -->
-    <div class="col-md-4 mb-4">
+    <div class="col-md-12 mb-12">
       <div class="card h-100 shadow-sm">
         <div class="card-header bg-primary text-white">
           <h3 class="card-title mb-0">Order Count Report</h3>
@@ -12,27 +26,17 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Payment Report -->
-    <div class="col-md-4 mb-4">
+  <!-- Payment Report -->
+  <div class="row reportClass">
+    <div class="col-md-12 mb-12">
       <div class="card h-100 shadow-sm">
         <div class="card-header bg-success text-white">
           <h3 class="card-title mb-0">Payment Report</h3>
         </div>
         <div class="card-body">
           <app-payment-report></app-payment-report>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mostly Ordered Product -->
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-header bg-warning text-dark">
-          <h3 class="card-title mb-0">Mostly Ordered Product</h3>
-        </div>
-        <div class="card-body">
-          <app-favourite-report></app-favourite-report>
         </div>
       </div>
     </div>

@@ -17,9 +17,6 @@ export class AuthService {
 
   // Method to handle login
   login(username: string, password: string) {
-    console.log('email===', username);
-    console.log('password===', password);
-    console.log('local storage===', window.localStorage.getItem('auth_token'));
 
     this.axiosService.request(
       "POST",

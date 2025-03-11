@@ -56,23 +56,29 @@ public class OrdersService {
     }
 
     //most ordered items
-    public Product mostOrderedProductDaily() {
+    public String mostOrderedProductDaily() {
         LocalDate today = LocalDate.now();
-        return ordersRepository.findMostOrderedProduct(today, today);
+        return Optional.ofNullable(ordersRepository.findMostOrderedProduct(today, today))
+                .map(Product::getName)
+                .orElse("No Product");
     }
 
-    public Product mostOrderedProductWeekly() {
+    public String mostOrderedProductWeekly() {
         LocalDate today = LocalDate.now();
         LocalDate startOfWeek = today.with(WeekFields.of(Locale.getDefault()).getFirstDayOfWeek()).minusDays(7);
         LocalDate endOfWeek = startOfWeek.plusDays(6);
-        return ordersRepository.findMostOrderedProduct(startOfWeek, endOfWeek);
+        return Optional.ofNullable(ordersRepository.findMostOrderedProduct(startOfWeek, endOfWeek))
+                .map(Product::getName)
+                .orElse("No Product") ;
     }
 
-    public Product mostOrderedProductMonthly() {
+    public String mostOrderedProductMonthly() {
         LocalDate today = LocalDate.now();
         LocalDate startOfMonth = today.withDayOfMonth(1);
         LocalDate endOfMonth = today.withDayOfMonth(today.lengthOfMonth());
-        return ordersRepository.findMostOrderedProduct(startOfMonth, endOfMonth);
+        return Optional.ofNullable(ordersRepository.findMostOrderedProduct(startOfMonth, endOfMonth))
+                .map(Product::getName)
+                .orElse("No Product") ;
     }
 
     //daily reports of order

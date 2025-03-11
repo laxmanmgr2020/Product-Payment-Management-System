@@ -13,6 +13,7 @@ import java.time.temporal.WeekFields;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class PaymentService {
@@ -46,7 +47,8 @@ public class PaymentService {
     //daily reports of payment
     public double dailyReport() {
         LocalDate today = LocalDate.now();
-        return paymentRepository.getTotalAmountBetweenDates(today, today);
+        Optional<Double> dailyAmount = Optional.ofNullable(paymentRepository.getTotalAmountBetweenDates(today, today));
+        return dailyAmount.orElse(0.0);
     }
 
     //weekly reports of payment
@@ -56,7 +58,8 @@ public class PaymentService {
         System.out.println("startOfWeek = " + startOfWeek);
         LocalDate endOfWeek = startOfWeek.plusDays(6);
         System.out.println("endOfWeek = " + endOfWeek);
-        return paymentRepository.getTotalAmountBetweenDates(startOfWeek, endOfWeek);
+        Optional<Double> weeklyAmount = Optional.ofNullable(paymentRepository.getTotalAmountBetweenDates(startOfWeek, endOfWeek));
+        return weeklyAmount.orElse(0.0);
     }
 
     //monthly reports of payment
@@ -66,6 +69,7 @@ public class PaymentService {
         System.out.println("startOfMonth = " + startOfMonth);
         LocalDate endOfMonth = today.withDayOfMonth(today.lengthOfMonth());
         System.out.println("endOfMonth = " + endOfMonth);
-        return paymentRepository.getTotalAmountBetweenDates(startOfMonth, endOfMonth);
+        Optional<Double> monthlyAmount = Optional.ofNullable(paymentRepository.getTotalAmountBetweenDates(startOfMonth, endOfMonth));
+        return monthlyAmount.orElse(0.0);
     }
 }

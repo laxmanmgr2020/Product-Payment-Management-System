@@ -24,7 +24,7 @@ export class PaymentComponent implements OnInit {
       error => {
         console.error('Payment fetch failed', error);
         this.axiosService.cleanStorage();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/products']);
       }
     );
   }

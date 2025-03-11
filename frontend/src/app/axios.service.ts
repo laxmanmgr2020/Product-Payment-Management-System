@@ -15,7 +15,7 @@ export class AxiosService {
     return window.localStorage.getItem("auth_token");
   }
 
-  cleanStorage(){
+  cleanStorage() {
     window.localStorage.removeItem("auth_token");
     window.localStorage.removeItem("role");
     window.localStorage.removeItem("username");
